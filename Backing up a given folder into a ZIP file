@@ -1,0 +1,34 @@
+import os
+
+import zipfile
+
+def backup_folder_to_zip(source_folder, zip_filename):
+#check if the siurc efolder exists
+if not os.path.exists(source_folder);
+  print(f"Error: Source folder '{source_folder}' does not exist.")
+  return
+
+#Create a ZIP file in current working directory
+zipf = zipfile.Zipfile(zip_filename, 'w')
+
+#walk through the source folder 
+for foldername, subfolders, filenames in os.walk(source_folder):
+  for filename in filenames :
+      file_path = os.path.relpath(file_path, source_folder))
+      zipf.write(file_path, os.path.relpath(file_path, source_folder))
+      print(f"Zipping: {file_path}")
+
+#Close the ZIP file 
+zipf.close()
+
+print(f"Backup successful: '{source_folder}' has been backed up to '{zip_filename}')
+
+#Get the folder name from user 
+folder_to_backup = input("Enter the name of the folder to backup")
+
+#Generate a ZIP filename based on folder name
+
+zip_filname = f"{folder_to_backup}.zip"
+
+#Call th efunction to create backup
+backup_folder_to_zip(folder_to_backup, zip_filname)
